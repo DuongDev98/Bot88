@@ -23,6 +23,7 @@ namespace BOT_IT_V1.Utils
                 return new BaseResult(false, ex.Message);
             }
         }
+
         public static BaseResult PostRequest(string path)
         {
             try
@@ -33,25 +34,16 @@ namespace BOT_IT_V1.Utils
                 {
                     return new BaseResult(true, "");
                 }
-
-                //HttpClient client = new HttpClient();
-                //HttpResponseMessage resp = client.PostAsync(url + path, null).Result;
-                //if (resp.StatusCode == HttpStatusCode.OK)
-                //{
-                //    return new BaseResult(true, "");
-                //}
-                //else
-                //{
-                //    string data = resp.Content.ReadAsStringAsync().Result;
-                //    JObject botJsonObj = JObject.Parse(data);
-                //    data = (botJsonObj["message"] ?? "").ToString();
-                //    return new BaseResult(false, data);
-                //}
-                //return new BaseResult(true, "");
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
-                return new BaseResult(false, "Mã phần mềm không tồn tại \n        Vui lòng liên hệ Hotline/Zalo : 0979.51.7777 để nhận mã phần mềm !");
+                using (StreamReader reader = new StreamReader(ex.Response.GetResponseStream()))
+                {
+                    string data = reader.ReadToEnd();
+                    JObject botJsonObj = JObject.Parse(data);
+                    data = (botJsonObj["message"] ?? "").ToString();
+                    return new BaseResult(false, data);
+                }
             }
         }
     }
