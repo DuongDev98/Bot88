@@ -1,0 +1,20 @@
+﻿<Window x:Class="BOT_IT_V1.LoaddingUi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BOT_IT_V1"
+        mc:Ignorable="d"
+        Title="BOT 88" Height="136" Width="521"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Icon="/icon.ico">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="381*"/>
+            <ColumnDefinition Width="140*"/>
+        </Grid.ColumnDefinitions>
+        <ProgressBar HorizontalAlignment="Left" Height="21" Margin="10,42,0,0" VerticalAlignment="Top" Width="480" Name="processBar" Grid.ColumnSpan="2"/>
+        <Label Content="ĐANG LẤY DỮ LIỆU CỔNG GAME" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="480" Background="LightCyan" Name="lblTitle" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <Label Content="LOADDING" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="480" Name="lblThongBao" FontWeight="Bold"/>
+    </Grid>
+</Window>
